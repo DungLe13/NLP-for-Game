@@ -9,6 +9,7 @@ import nltk
 import language_check
 import requests
 from spelling_correction import Spelling_Correction
+from grammar_checker import Grammar_Checker
 from nltk.corpus import stopwords
 from rake_nltk import Rake
 
@@ -19,20 +20,27 @@ while True:
     command = input("Enter your command: ")
 
     # STEP 2: Check for spelling and grammar
+    # Step 2-a: Check for spelling
     sc = Spelling_Correction(command)
     suggestion = sc.run()
     print(suggestion)
 
+    # Step 2-b: Check again for spelling and basic grammar
     tool = language_check.LanguageTool('en-US')
     errors = tool.check(command)
     for i in range(len(errors)):
         print(errors[i])
 
+    # Step 2-c: Check again using pre-defined grammar
+    gc = Grammar_Checker(command)
+    grammar_eval = gc.run()
+    print(grammar_eval)
+
     # STEP 3: Check for semantics and pragmatics using OMCS
-    if suggestion != "No spelling error found..." or len(errors) != 0:
+    if suggestion != "No spelling error found..." or len(errors) != 0 or grammar_eval != "Corrected":
         continue
     else:
-        # User input is grammatically correct
+        # User input is grammatically correct; Now check for semantics
         # Attempt 1: Remove stopwords from user's input
         word_list = nltk.word_tokenize(command.lower())
         filtered_words = []

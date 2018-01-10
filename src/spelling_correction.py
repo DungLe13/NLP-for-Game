@@ -7,7 +7,9 @@
 """
 
 import re
+import nltk
 from collections import Counter
+from nltk.tokenize import word_tokenize
 
 def words(text):
     return re.findall(r'\w+', text.lower())
@@ -17,7 +19,7 @@ WORDS = Counter(words(open('../data/big.txt').read()))
 class Spelling_Correction:
     def __init__(self, user_input):
         # user_input: the command input by user
-        self.user_input = user_input
+        self.user_input = user_input.lower()
 
     def P(self, word, N=sum(WORDS.values())):
         # Probability of `word`
@@ -55,13 +57,17 @@ class Spelling_Correction:
         return (e2 for e1 in self.edits1(word) for e2 in self.edits1(e1))
 
     def run(self):
-        word_list = (self.user_input).split(sep=' ')
+        word_list = word_tokenize(self.user_input)
         correct_list = []
+        non_alphameric = False
         for word in word_list:
-            correct_spelling = self.correction(word)
-            correct_list.append(correct_spelling)
+            if word.isalnum():
+                correct_spelling = self.correction(word)
+                correct_list.append(correct_spelling)
+            else:
+                non_alphameric = True
         correction = ' '.join(correct_list)
-        if correction != (self.user_input).lower():
+        if (non_alphameric == True and correction != ' '.join(word_list[:-1])) or (non_alphameric == False and correction != self.user_input):
             return "Do you mean: '{0}'?".format(correction)
         else:
             return "No spelling error found..."
