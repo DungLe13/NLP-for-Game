@@ -39,7 +39,7 @@ class Grammar_Checker:
 
         # If the grammar input by user is in the pre-defined list
         # the user_input's grammar is then correct
-        if sent_pos in grammar_list:
+        if sent_pos in large_grammar_list:
             return "Corrected"
         else:
             return "Incorrected"

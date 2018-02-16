@@ -1,0 +1,28 @@
+TEMPLATE FOR LEVEL DESCRIPTION
+
+### Requirements ###
+	File should be saved in .json format
+	List of locations and objects in each location must be distinct
+	Double-quote ("") is required
+
+{
+	"LOCATION_1": {
+		"OBJECT_1": {
+			"relative_position": "where is object_1 in location_1 (can be NULL)",
+			"possible_action": "what can the player do with this object",
+			"destination": "will the action lead to anywhere? (can be NULL)",
+			"requirement": "is there any requirement to do the action?"
+		},
+		"OBJECT_2": {
+			"relative_position": "",
+			"possible_action": ["if there are multiple possible actions", "use this format"],
+			"destination": "",
+			"requirement": ""
+		},
+		...
+	},
+	"LOCATION_2": {
+		List all objects in location_2 in the same format as above
+	},
+	...
+}

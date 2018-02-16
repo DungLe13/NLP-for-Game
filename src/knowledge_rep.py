@@ -35,7 +35,6 @@ POS_tagger = spacy.load('en')
 
 with open("../data/level-desc.txt", "r") as desc_file:
     desc_text = desc_file.read().splitlines()
-desc_file.close()
 
 def description_formatter(description):
     '''
@@ -173,7 +172,7 @@ def knowledge_representation(object_dict, description_dict):
                     action_array.append(action)
 
     final_actions = list(set(action_array))
-    print(final_actions)
+    #print(final_actions)
 
     objects = list(set(objects))
     #print(objects)
@@ -211,19 +210,16 @@ def knowledge_representation(object_dict, description_dict):
             obj_ = obj.replace('_', ' ')
             obj_word_list = nltk.word_tokenize(obj_)
             if obj_ in action:
-                print('YES ' + obj_)
                 if obj_knowledge_dict["location"] in action:
                     action = action.replace(obj_knowledge_dict["location"], '')
-                    obj_knowledge_dict["pos_action"] = action
+                    obj_knowledge_dict["pos_action"] = action.strip()
                     break
             else:
                 for word in obj_word_list:
-                    print('NO ' + word)
                     if word in action:
-                        print('But now, YES ' + word)
                         if obj_knowledge_dict["location"] in action:
                             action = action.replace(obj_knowledge_dict["location"], '')
-                            obj_knowledge_dict["pos_action"] = action
+                            obj_knowledge_dict["pos_action"] = action.strip()
                             break
                     else:
                         obj_knowledge_dict["pos_action"] = None
@@ -239,10 +235,9 @@ def knowledge_representation(object_dict, description_dict):
             obj_knowledge_dict["destination"] = knowledge_dict[obj]["location"]
             knowledge_dict[obj+'_2'] = obj_knowledge_dict
 
-    print(knowledge_dict)
-    #return knowledge_dict
+    #print(knowledge_dict)
+    return knowledge_dict
 
 if __name__ == "__main__":
     obj_dict, desc_dict = description_formatter(desc_text)
-    # print(obj_dict, desc_dict)
     knowledge_representation(obj_dict, desc_dict)

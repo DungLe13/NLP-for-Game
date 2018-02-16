@@ -1,0 +1,94 @@
+{
+	"Desert": {
+		"wooden door": {
+			"possible_action": "open the wooden door",
+			"destination": "Room A",
+			"requirement": null
+		},
+		"stairs": {
+			"possible_action": "dig the sand",
+			"destination": "Room C",
+			"requirement": {"object": "shovel", "location": "in the bag"}
+		}
+	},
+	"Room A": {
+		"wooden door": {
+			"possible_action": "open the wooden door",
+			"destination": "Desert",
+			"requirement": null
+		},
+		"orange door": {
+			"possible_action": "open the orange door",
+			"destination": "Basement",
+			"requirement": null
+		},
+		"hallway": {
+			"possible_action": "walk down the hallway",
+			"destination": "Room B",
+			"requirement": null
+		},
+		"ladder": {
+			"possible_action": "climb down the ladder",
+			"destination": "Room C",
+			"requirement": null
+		}
+	},
+	"Room B": {
+		"dusty throne": {
+			"possible_action": "sit on the throne",
+			"destination": null,
+			"requirement": {"object": "crown", "location": "behind the spider"}
+		},
+		"green door": {
+			"possible_action": "open the green door",
+			"destination": "Basement",
+			"requirement": null
+		},
+		"hallway": {
+			"possible_action": "walk back the hallway",
+			"destination": "Room A",
+			"requirement": null
+		}
+	},
+	"Basement": {
+		"orange door": {
+			"possible_action": "open the orange door",
+			"destination": "Room A",
+			"requirement": null
+		},
+		"green door": {
+			"possible_action": "open the green door",
+			"destination": "Room B",
+			"requirement": null
+		},
+		"crown": {
+			"possible_action": "pick up the crown",
+			"destination": "in the bag",
+			"requirement": null
+		}
+	},
+	"Room C": {
+		"stairs": {
+			"possible_action": "walk upstairs",
+			"destination": "Desert",
+			"requirement": null
+		},
+		"ladder": {
+			"possible_action": "climb up the ladder",
+			"destination": "Room A",
+			"requirement": null
+		},
+		"black door": {
+			"possible_action": "open the black door",
+			"destination": "Room D",
+			"requirement": {"object": "key", "location": "in the bag"}
+		}
+	},
+	"Room D": {
+		"black door": {
+			"possible_action": "open the black door",
+			"destination": "Room D",
+			"requirement": {"object": "key", "location": "in the bag"}
+		}
+	}
+}

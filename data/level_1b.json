@@ -1,0 +1,47 @@
+{
+	"wooden door": {
+		"possible_action": "open the wooden door",
+		"locations": ["Room A", "Desert"],
+		"requirement": null
+	},
+	"stairs": {
+		"possible_action": ["dig the sand", "walk down the stairs", "walk upstairs"],
+		"locations": ["Desert", "Room C"],
+		"requirement": {"object": "shovel", "location": "in the bag"}
+	},
+	"orange door": {
+		"possible_action": "open the orange door",
+		"locations": ["Room A", "Basement"],
+		"requirement": null
+	},
+	"hallway": {
+		"possible_action": ["walk down the hallway", "walk back the hallway"],
+		"locations": ["Room A", "Room B"],
+		"requirement": null
+	},
+	"ladder": {
+		"possible_action": ["climb down the ladder", "climb up the ladder"],
+		"locations": ["Room A", "Room C"],
+		"requirement": null
+	},
+	"throne": {
+		"possible_action": "sit on the throne",
+		"locations": "Room B",
+		"requirement": {"object": "crown", "location": "behind the spider"}
+	},
+	"green door": {
+		"possible_action": "open the green door",
+		"locations": ["Room B", "Basement"],
+		"requirement": null
+	},
+	"crown": {
+		"possible_action": "pick up the crown",
+		"locations": "Basement",
+		"requirement": null
+	},
+	"black door": {
+		"possible_action": "open the black door",
+		"locations": ["Room C", "Room D"],
+		"requirement": {"object": "key", "location": "in the bag"}
+	}
+}
