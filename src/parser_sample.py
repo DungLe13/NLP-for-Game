@@ -26,10 +26,9 @@ with open('../data/smaller.txt', 'r') as doc:
             if token.is_alpha:
                 sample_sent_pos = sample_sent_pos + token.tag_ + " "
         sample_pos.append(sample_sent_pos)
-doc.close()
+
 print("+++ END OF PARSING +++")
 
 with open('../data/sample-pos.txt', 'w') as pos_file:
     for item in sample_pos:
         pos_file.write(item + "\n")
-pos_file.close()

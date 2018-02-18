@@ -14,7 +14,6 @@ parser = spacy.load('en')
 # Need to enter correct parse tree manually
 with open("../data/level-pos.txt", "r") as rule_grammar:
     grammar_list = rule_grammar.read().splitlines()
-rule_grammar.close()
 
 # Possibility 2: Grammar learned from large corpus
 # The grammar in this case is learned using spaCy parser for a subset taken
@@ -22,7 +21,6 @@ rule_grammar.close()
 # precision), yet, high coverage.
 with open("../data/sample-pos.txt", "r") as auto_grammar:
     large_grammar_list = auto_grammar.read().splitlines()
-auto_grammar.close()
 
 class Grammar_Checker:
     def __init__(self, user_input):
